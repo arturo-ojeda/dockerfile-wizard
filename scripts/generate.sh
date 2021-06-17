@@ -4,6 +4,15 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
 # echo "RUN add-apt-repository ppa:openjdk-r/ppa"
 
+echo "RUN set -ex && \
+    echo 'deb http://deb.debian.org/debian jessie-backports main' \
+      > /etc/apt/sources.list.d/jessie-backports.list && \
+    apt update -y && \
+    apt install -t \
+      jessie-backports \
+      openjdk-8-jre-headless \
+      ca-certificates-java -y"
+
 echo "RUN apt-get update"
 
 # echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
@@ -52,7 +61,7 @@ RUN if [ \$(grep 'VERSION_ID="8"' /etc/os-release) ] ; then \\
     echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list && \\
     apt-get update && apt-get -y install -t jessie-backports openjdk-8-jdk ca-certificates-java \\
 ; elif [ \$(grep 'VERSION_ID="9"' /etc/os-release) ] ; then \\
-		apt-get update && apt-get -y -q --no-install-recommends install -t openjdk-8-jdk ca-certificates-java \\
+		apt-get update && apt-get -y -q --no-install-recommends install -t stable openjdk-8-jdk ca-certificates-java \\
 ; elif [ \$(grep 'VERSION_ID="14.04"' /etc/os-release) ] ; then \\
 		apt-get update && \\
     apt-get --force-yes -y install software-properties-common python-software-properties && \\

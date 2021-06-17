@@ -13,7 +13,7 @@ image_config: &image_config
   # make sure you also add the values of your IMAGE_NAME & IMAGE_TAG variables
   # to the `test_image` job (line 55)
 
-  LINUX_VERSION: DEBIAN_STRETCH
+  LINUX_VERSION: UBUNTU_TRUSTY
 
   RUBY_VERSION_NUM: 2.4.2
 
@@ -21,7 +21,7 @@ image_config: &image_config
 
   # PYTHON_VERSION_NUM: # pick a version from https://python.org/ftp/python
 
-  JAVA: true
+  JAVA: false
 
   MYSQL_CLIENT: false
 
