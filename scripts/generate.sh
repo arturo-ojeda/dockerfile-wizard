@@ -2,6 +2,7 @@
 
 echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
+echo "RUN add-apt-repository ppa:openjdk-r/ppa"
 echo "RUN apt-get update"
 
 echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
