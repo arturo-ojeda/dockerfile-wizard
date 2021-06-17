@@ -21,9 +21,9 @@ image_config: &image_config
 
   # PYTHON_VERSION_NUM: # pick a version from https://python.org/ftp/python
 
-  JAVA: true
+  JAVA: false
 
-  MYSQL_CLIENT: true
+  MYSQL_CLIENT: false
 
   POSTGRES_CLIENT: false
 
