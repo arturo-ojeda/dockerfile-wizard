@@ -113,7 +113,7 @@ echo "RUN apt-get -y install redis-server"
 echo "RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server"
 echo "RUN apt-get -y install awscli"
 
-echo "RUN apt-get -y install unzip"
+echo "RUN apt-get -y install zip unzip"
 
 echo "RUN curl -s 'https://get.sdkman.io' | bash"
 echo "RUN source '$HOME/.sdkman/bin/sdkman-init.sh'"
