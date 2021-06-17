@@ -112,7 +112,12 @@ echo "ENV DISPLAY :99"
 echo "RUN apt-get -y install redis-server"
 echo "RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server"
 echo "RUN apt-get -y install awscli"
-echo "RUN apt-get -y install openjdk-8-jdk"
+
+echo "RUN curl -s 'https://get.sdkman.io' | bash"
+echo "RUN source '$HOME/.sdkman/bin/sdkman-init.sh'"
+echo "RUN sdk install java 8u144-zulu"
+
+echo "RUN sdk install grails 2.5.6"
 
 echo "# install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
