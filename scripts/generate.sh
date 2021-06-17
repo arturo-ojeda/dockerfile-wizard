@@ -4,6 +4,11 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
 echo "RUN apt-get update"
 
+echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
+echo "RUN apt-get install ca-certificates-java && update-ca-certificates -f"
+echo "ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/"
+echo "RUN export JAVA_HOME"
+
 if [ ! -e $RUBY_VERSION_NUM ] ; then
     echo "RUN apt-get install -y libssl-dev && wget http://ftp.ruby-lang.org/pub/ruby/$(awk -F'.' '{ print $1"."$2 }' <<< $RUBY_VERSION_NUM)/ruby-$RUBY_VERSION_NUM.tar.gz && \
     tar -xzvf ruby-$RUBY_VERSION_NUM.tar.gz && \
@@ -112,18 +117,6 @@ echo "ENV DISPLAY :99"
 echo "RUN apt-get -y install redis-server"
 echo "RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server"
 echo "RUN apt-get -y install awscli"
-
-echo "RUN apt-get -y install zip unzip"
-
-echo "RUN curl -s \"https://get.sdkman.io\" | bash"
-
-echo "RUN chmod a+x \"/root/.sdkman/bin/sdkman-init.sh\" "
-# echo "RUN source \"/root/.sdkman/bin/sdkman-init.sh\" "
-echo "RUN bash -c '/root/.sdkman/bin/sdkman-init.sh' ;  sdk install java 8u144-zulu ; sdk install grails 2.5.6"
-
-# echo "RUN sdk install java 8u144-zulu"
-
-# echo "RUN sdk install grails 2.5.6"
 
 echo "# install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
