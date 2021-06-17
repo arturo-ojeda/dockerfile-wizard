@@ -16,7 +16,7 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
 echo "RUN apt-get update"
 
-echo "RUN 'deb http://ftp.debian.org/debian jessie-backports main' >> /etc/apt/sources.list && apt-get update && apt-get -y install -t jessie-backports openjdk-8-jdk ca-certificates-java"
+#echo "RUN 'deb http://ftp.debian.org/debian jessie-backports main' >> /etc/apt/sources.list && apt-get update && apt-get -y install -t jessie-backports openjdk-8-jdk ca-certificates-java"
 
 # echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
 # echo "RUN apt-get install ca-certificates-java && update-ca-certificates -f"
