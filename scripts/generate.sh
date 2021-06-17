@@ -4,16 +4,19 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
 # echo "RUN add-apt-repository ppa:openjdk-r/ppa"
 
-echo "RUN set -ex && \
-    echo 'deb http://deb.debian.org/debian jessie-backports main' \
-      > /etc/apt/sources.list.d/jessie-backports.list && \
-    apt update -y && \
-    apt install -t \
-      jessie-backports \
-      openjdk-8-jre-headless \
-      ca-certificates-java -y"
+# echo "RUN set -ex && \
+#     echo 'deb http://deb.debian.org/debian jessie-backports main' \
+#       > /etc/apt/sources.list.d/jessie-backports.list && \
+#     apt update -y && \
+#     apt install -t \
+#       jessie-backports \
+#       openjdk-8-jre-headless \
+#       ca-certificates-java -y"
+# 
 
 echo "RUN apt-get update"
+
+echo "RUN 'deb http://ftp.debian.org/debian jessie-backports main' >> /etc/apt/sources.list && apt-get update && apt-get -y install -t jessie-backports openjdk-8-jdk ca-certificates-java"
 
 # echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
 # echo "RUN apt-get install ca-certificates-java && update-ca-certificates -f"
