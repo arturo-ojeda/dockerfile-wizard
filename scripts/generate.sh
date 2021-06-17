@@ -116,7 +116,7 @@ echo "RUN apt-get -y install awscli"
 echo "RUN apt-get -y install zip unzip"
 
 echo "RUN curl -s \"https://get.sdkman.io\" | bash"
-echo "RUN source \"/root/.sdkman/bin/sdkman-init.sh\" "
+
 echo "RUN sdk install java 8u144-zulu"
 
 echo "RUN sdk install grails 2.5.6"
