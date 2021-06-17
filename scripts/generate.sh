@@ -5,10 +5,10 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 echo "RUN add-apt-repository ppa:openjdk-r/ppa"
 echo "RUN apt-get update"
 
-echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
-echo "RUN apt-get install ca-certificates-java && update-ca-certificates -f"
-echo "ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/"
-echo "RUN export JAVA_HOME"
+# echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
+# echo "RUN apt-get install ca-certificates-java && update-ca-certificates -f"
+# echo "ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/"
+# echo "RUN export JAVA_HOME"
 
 if [ ! -e $RUBY_VERSION_NUM ] ; then
     echo "RUN apt-get install -y libssl-dev && wget http://ftp.ruby-lang.org/pub/ruby/$(awk -F'.' '{ print $1"."$2 }' <<< $RUBY_VERSION_NUM)/ruby-$RUBY_VERSION_NUM.tar.gz && \
