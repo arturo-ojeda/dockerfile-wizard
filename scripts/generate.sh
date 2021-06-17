@@ -112,7 +112,7 @@ echo "ENV DISPLAY :99"
 echo "RUN apt-get -y install redis-server"
 echo "RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server"
 echo "RUN apt-get -y install awscli"
-echo "RUN apt-get -y install oracle-java8-installer"
+echo "RUN apt-get -y install openjdk-8-jdk"
 
 echo "# install chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
