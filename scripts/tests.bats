@@ -39,10 +39,6 @@
 }
 
 @test "java" {
-  if [ $JAVA != "true" ] ; then
-    skip "java not installed"
-  fi
-
   java -version
 }
 
@@ -54,36 +50,12 @@
   mysql --version
 }
 
-@test "postgres client" {
-  if [ $POSTGRES_CLIENT != "true" ] ; then
-    skip "postgres client not installed"
-  fi
-
-  psql --version
-}
-
 @test "dockerize" {
   if [ $DOCKERIZE != "true" ] ; then
     skip "dockerize not installed"
   fi
 
   dockerize --version
-}
-
-@test "phantomjs" {
-  if [ $BROWSERS != "true" ] ; then
-    skip "no browser tools installed"
-  fi
-
-  phantomjs --version
-}
-
-@test "firefox" {
-  if [ $BROWSERS != "true" ] ; then
-    skip "no browsers installed"
-  fi
-
-  firefox --version
 }
 
 @test "google chrome" {
