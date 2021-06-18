@@ -5,7 +5,6 @@ echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 echo "RUN apt-get update"
 
 echo "RUN DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server"
-echo "RUN systemctl status mysql"
 
 echo "RUN wget https://public.3.basecamp.com/p/WDDYzFmo9c74f8uG4HE9AUB8/upload/download/jdk-8u291-linux-x64.tar.gz?disposition=attachment"
 echo "RUN mv jdk-8u291-linux-x64.tar.gz?disposition=attachment jdk8.tar.gz"
