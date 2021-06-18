@@ -2,26 +2,19 @@
 
 echo "FROM buildpack-deps:$(awk -F'_' '{print tolower($2)}' <<< $LINUX_VERSION)"
 
-# echo "RUN add-apt-repository ppa:openjdk-r/ppa"
-
-# echo "RUN set -ex && \
-#     echo 'deb http://deb.debian.org/debian jessie-backports main' \
-#       > /etc/apt/sources.list.d/jessie-backports.list && \
-#     apt update -y && \
-#     apt install -t \
-#       jessie-backports \
-#       openjdk-8-jre-headless \
-#       ca-certificates-java -y"
-# 
-
 echo "RUN apt-get update"
 
-#echo "RUN 'deb http://ftp.debian.org/debian jessie-backports main' >> /etc/apt/sources.list && apt-get update && apt-get -y install -t jessie-backports openjdk-8-jdk ca-certificates-java"
-
-# echo "RUN apt-get install -y openjdk-8-jdk && apt-get install -y ant "
-# echo "RUN apt-get install ca-certificates-java && update-ca-certificates -f"
-# echo "ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/"
-# echo "RUN export JAVA_HOME"
+echo "RUN wget https://public.3.basecamp.com/p/WDDYzFmo9c74f8uG4HE9AUB8/upload/download/jdk-8u291-linux-x64.tar.gz?disposition=attachment"
+echo "RUN mv jdk-8u291-linux-x64.tar.gz?disposition=attachment jdk8.tar.gz"
+echo "RUN mkdir /usr/lib/jvm"
+echo "RUN tar -xvzf jdk8.tar.gz -C /usr/lib/jvm"
+echo "ENV PATH='/usr/lib/jvm/jdk1.8.0_291/bin:/usr/lib/jvm/jdk1.8.0_291/db/bin:/usr/lib/jvm/jdk1.8.0_291/jre/bin:${PATH}' "
+echo "ENV JAVA_HOME='/usr/lib/jvm/jdk1.8.0_291' "
+# echo "RUN update-alternatives --install '/usr/bin/java' 'java' '/usr/lib/jvm/jdk1.8.0_291/bin/java' 0"
+# echo "RUN update-alternatives --install '/usr/bin/javac' 'javac' '/usr/lib/jvm/jdk1.8.0_291/bin/javac' 0"
+# echo "RUN update-alternatives --set java /usr/lib/jvm/jdk1.8.0_291/bin/java"
+# echo "RUN update-alternatives --set javac /usr/lib/jvm/jdk1.8.0_291/bin/javac"
+echo "RUN java -version"
 
 if [ ! -e $RUBY_VERSION_NUM ] ; then
     echo "RUN apt-get install -y libssl-dev && wget http://ftp.ruby-lang.org/pub/ruby/$(awk -F'.' '{ print $1"."$2 }' <<< $RUBY_VERSION_NUM)/ruby-$RUBY_VERSION_NUM.tar.gz && \
